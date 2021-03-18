@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [task, setTask] = useState([]);
+
+  useEffect(() => {
+    // Met à jour le titre du document via l’API du navigateur
+    fetch("https://6053736845e4b30017291b83.mockapi.io/tasks")
+      .then(response => {
+        return response.json();
+      })
+      .then(result => {
+        setTask([task, result]);
+      });
+  });
+
+  return;
 }
 
 export default App;
