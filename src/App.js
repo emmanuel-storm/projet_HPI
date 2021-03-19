@@ -1,32 +1,24 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
+const fetchURL = "https://6053736845e4b30017291b83.mockapi.io/tasks";
+const getItems = () => fetch(fetchURL).then(res => res.json());
+
 function App() {
-  const [task, setTask] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    // Met à jour le titre du document via l’API du navigateur
-    const fretchTask = async () => {
-      const result = await fetch(
-        "https://6053736845e4b30017291b83.mockapi.io/tasks"
-      );
-
-      setTask(result.task);
-    };
-    fretchTask();
-  });
-
-  let itemsToRender;
-  if (task) {
-    itemsToRender = task.map(item => {
-      return <div key={item.id}>{item.description}</div>;
-    });
-  }
-
+    getItems().then(data => setItems(data));
+  }, []);
+  console.log(items);
   return (
-    <Fragment>
-      <div>{itemsToRender}</div>
-    </Fragment>
+    <div className="app">
+      <div className="todo">
+        {items.map(item => (
+          <div key={item.id}>{item.description}</div>
+        ))}
+      </div>
+    </div>
   );
 }
 
