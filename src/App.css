@@ -2,9 +2,13 @@ body {
   background-color: burlywood;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .app {
-  background: #209cee;
-  height: 100vh;
+  /* background: #209cee; */
+
   padding: 30px;
 }
 
@@ -13,6 +17,8 @@ body {
   border-radius: 4px;
   max-width: 400px;
   padding: 5px;
+  overflow: scroll;
+  max-height: 500px;
 }
 
 .todo {
@@ -25,4 +31,13 @@ body {
   justify-content: space-between;
   margin-bottom: 6px;
   padding: 3px 10px;
+}
+
+.addTask {
+  width: 200px;
+  height: 5vh;
+  display: block;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
