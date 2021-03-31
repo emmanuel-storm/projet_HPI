@@ -5,6 +5,9 @@ import { Button, Card, Form } from "react-bootstrap";
 import moment from "moment";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
+const fetchURL = "https://6053736845e4b30017291b83.mockapi.io/tasks";
+const getItems = () => fetch(fetchURL).then(res => res.json());
+
 function Todo({ item, index, markTask, removeTask }) {
   return (
     <div className="todo">
@@ -26,13 +29,12 @@ function Todo({ item, index, markTask, removeTask }) {
   );
 }
 
-function TaskForm({ addTask }) {
+function TaskForm({ data }) {
   const [value, setValue] = React.useState("");
-
   const handleSubmit = e => {
     e.preventDefault();
     if (!value) return;
-    addTask(value);
+    data(value);
     setValue("");
   };
 
@@ -61,11 +63,23 @@ function TaskForm({ addTask }) {
 function CurrentTasks() {
   // ajouter une tache
 
-  const addTask = (description, createdAt) => {
-    const newItems = [{ description, createdAt }, ...items];
-    createdAt = "22 / 03 / 2001 - 13:43:45";
-    setItems(newItems);
-  };
+  // const addTask = (description, createdAt) => {
+  //   const newItems = [{ description, createdAt }, ...items];
+  //   setItems(newItems);
+  // };
+
+  const data = { task: "example", date: "dd/MM/yyyy kk:mm:ss" };
+  fetch(fetchURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("success:", data);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
 
   // marquer une tache comme complete ou !
 
@@ -83,9 +97,6 @@ function CurrentTasks() {
     setItems(newItems);
   };
 
-  const fetchURL = "https://6053736845e4b30017291b83.mockapi.io/tasks";
-  const getItems = () => fetch(fetchURL).then(res => res.json());
-
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -102,8 +113,9 @@ function CurrentTasks() {
   return (
     <div className="app">
       <h1>CURRENT TASKS</h1>
+      <TaskForm data={data} />
       <ul className="todo-list">
-        <TaskForm addTask={addTask} />
+        {/* <TaskForm addTask={addTask} /> */}
         {items
           .filter(item => item.isComplete === false)
           .map(item => (
