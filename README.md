@@ -1,71 +1,109 @@
-# Getting Started with Create React App
+# Démarrage avec Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet a été démarré avec [Create React App] (https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Scripts disponibles
 
-In the project directory, you can run:
+Dans le répertoire du projet, vous pouvez exécuter :
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Lance l'application en mode développement.
+Ouvrez [http://localhost:3000](http://localhost:3000) pour la visualiser dans le navigateur.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+La page se rechargera si vous effectuez des modifications.
+Vous verrez également toutes les erreurs de lint dans la console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lance le programme d'exécution des tests en mode de surveillance interactive.
+Consultez la section sur [l'exécution des tests] (https://facebook.github.io/create-react-app/docs/running-tests) pour plus d'informations.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Construit l'application pour la production dans le dossier `build`.
+Il regroupe correctement React en mode production et optimise la construction pour obtenir les meilleures performances.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+La compilation est réduite et les noms de fichiers incluent les hachages.
+Votre application est prête à être déployée !
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Consultez la section sur le [déploiement] (https://facebook.github.io/create-react-app/docs/deployment) pour plus d'informations.
 
-### `npm run eject`
+### `npm run eject`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Note : c'est une opération à sens unique. Une fois que vous avez `ejecté`, vous ne pouvez plus revenir en arrière !**.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Si vous n'êtes pas satisfait de l'outil de compilation et des choix de configuration, vous pouvez vous `ejecter` à tout moment. Cette commande enlèvera la dépendance de construction unique de votre projet.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Au lieu de cela, elle copiera tous les fichiers de configuration et les dépendances transitives (webpack, Babel, ESLint, etc) directement dans votre projet afin que vous ayez un contrôle total sur eux. Toutes les commandes sauf `eject` fonctionneront toujours, mais elles pointeront vers les scripts copiés afin que vous puissiez les modifier. A ce stade, vous vous débrouillez tout seul.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Vous n'aurez jamais à utiliser `eject`. L'ensemble des fonctionnalités conservées est adapté aux petits et moyens déploiements, et vous ne devriez pas vous sentir obligé d'utiliser cette fonctionnalité. Cependant, nous comprenons que cet outil ne serait pas utile si vous ne pouviez pas le personnaliser lorsque vous êtes prêt à le faire.
 
-## Learn More
+## En savoir plus
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Vous pouvez en savoir plus en consultant la [documentation sur la création d'une application React] (https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Pour apprendre React, consultez la [documentation React](https://reactjs.org/).
 
-### Code Splitting
+### Fractionnement du code
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### Analyse de la taille des paquets
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+### Créer une application Web progressive
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### Configuration avancée
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### Déploiement
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+### `npm run build` ne parvient pas à minifier les fichiers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# projet_HPI
+Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+                                          
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                #PROJET HPI#
+
+                                                
+
+
+###### Etat actuel du code 
+
+Sur les 7 taches, il y'a 3 qui ont été faites totalement à savoir : 
+=> taches affichées sous forme de liste, les unes sur les autres 
+=> taches ordonnées en deux blocks : taches en cours et taches terminée. les blocks sont ordonnés par date de création des taches 
+=> la liste est récupérée depuis l'api rest donnée 
+
+il y'a 4 taches en cours à savoir : 
+=> champ texte permettant d'ajouter une nouvelle tache (j'ai pu la faire sans utiliser les méthodes HTTP mais encore en cours car je m'en suis rendu compte tardivement)
+=> possible d'ajouter une tache comme terminée 
+=> Un bouton permet de supprimer toutes les taches 
+=> les actions telles que ajouter, supprimer ou marquer une tache s'effectuent sur l'api
+
+Je pouvais cependant faire des taches en dehors des 7 premières tel que : 
+=> l'application divisée en deux pages car j'ai eu l'occasion d'utiliser les routes en react pour un petit projet de prise en main de react que vous pouvez retrouver ici :  https://github.com/RomainBiziou/reactproject/tree/develop
+
+### Bibliothèque tierces utilisées 
+
+J'aimerais preciser que j'ai voulu coder en "React Hooks" car je trouve la syntaxe plus facile et aussi car on commençait à faire la prise en main en classe, ce projet m'a alors beaucoup aidé car j'ai fait pas mal de recherches et j'ai fini par avoir une petite avance sur mes amis pendant les cours de React.
+
+Comme bibliothèques tierces j'ai utilisé (pendant un moment en codant mais pas dans cette version du projet) les boutons de bootstrap qui sont tres facile à utiliser et très beaux d'ailleur
+J'ai aussi utilisé une bibliothèque de date qui est "moment" : https://momentjs.com/)     que je vais utiliser (car pas encore terminé) pour ajouter directement la date des que le libellé d'une tache a été ajouté. l'avantage qu'a cette library est qu'elle est tres pratique à utiliser et elle dispose de plusieurs format d'affichage de la date ainsi que de l'heure, celle de l'api createdAt y compris.
+
+### étape de codage
+
+J'ai rassemblé toutes les taches à faire ainsi que mon avancement dans le code à chaque grande étape au cas où je perdrais par quelconque manipulation l'intégralité de mon avancement.
+Vous y trouverez également les différentes pistes utilisées à certains moments : https://www.notion.so/Projet-React-HPI-655e1b806a5148159743f8b73b603a68

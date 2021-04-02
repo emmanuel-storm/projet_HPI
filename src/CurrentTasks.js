@@ -10,6 +10,7 @@ const fetchURL = "https://6053736845e4b30017291b83.mockapi.io/tasks";
 const getItems = () => fetch(fetchURL).then(res => res.json());
 
 function create(e) {
+  // ajouter une tache
   // entité d'ajout - POST   ===>   e.preventDefault() a été mis dans le onChange de input car sinon
   //erreur : e.preventDefault() is not a function
 
@@ -34,6 +35,7 @@ function create(e) {
 }
 
 function update(e) {
+  // fonction pour dire si la tache est faite ou pas
   // entité de mise à jour - PUT
   e.preventDefault();
 
@@ -56,6 +58,7 @@ function update(e) {
 }
 
 function supp(e) {
+  // supprimer une tache
   //entité pour supprimer - DELETE
   e.preventDefault();
 
@@ -75,12 +78,14 @@ function supp(e) {
 }
 
 function CurrentTasks() {
-  const [items, setItems] = useState([]);
-  const [task, setTask] = useState("");
+  // currentTask parceque quand j'avais refactor mon code j'avais crée plusieurs fichiers js pour bien presenter mon code
+  const [items, setItems] = useState([]); // pour gerer la recuperation et l'affichage des données de l'api
+  const [task, setTask] = useState(""); // pour la modification de mes taches (add, update, remove)
 
   // afficher la date dans un format plus lisible
 
   useEffect(() => {
+    // componentDidMount() pour le react-based avec les classes
     getItems().then(data =>
       setItems(
         data.sort((a, b) => {
