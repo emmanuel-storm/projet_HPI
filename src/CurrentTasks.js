@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import format from "date-fns/format";
 import { Button } from "react-bootstrap";
 //pour la date
-import moment from "moment";
+// import moment from "moment";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 const fetchURL = "https://6053736845e4b30017291b83.mockapi.io/tasks";
 const getItems = () => fetch(fetchURL).then(res => res.json());
 
 function create(e) {
-  // entité d'ajout - POST
+  // entité d'ajout - POST   ===>   e.preventDefault() a été mis dans le onChange de input
 
   //creer l'entité
   fetch(fetchURL, {
     method: "POST",
     body: JSON.stringify({
-      tache: useState.tache,
-      date: useState.date
+      tache: null,
+      date: null
     })
   })
     .then(res => res.json())
@@ -26,6 +26,8 @@ function create(e) {
     .catch(err => {
       console.log(err);
     });
+
+  // ajouter dans la liste des taches
 }
 
 function update(e) {
@@ -55,7 +57,7 @@ function supp(e) {
 
   // supprime les entités
 
-  fetch(fetchURL, {
+  fetch(`${fetchURL}/${e.id}`, {
     method: "DELETE"
   })
     .then(res => res.json())
@@ -106,12 +108,25 @@ function CurrentTasks() {
             required
           />
         </label>
+        <button
+          className="btn btn-primary"
+          type="submit"
+          onClick={e => create(e)}
+        >
+          Add
+        </button>
+        <button className="btn btn-danger" type="button" onClick={e => supp(e)}>
+          Delete
+        </button>
       </form>
       {/* <TaskForm data={data} /> */}
       <ul className="todo-list">
         {items
           .filter(item => item.isComplete === false)
-          .map((item, idx) => (
+          .map((
+            item,
+            idx //// j'ai rajouté idx car quand j'appellais key={item.id} il y"avait des erreurs d'elements avec la meme clé
+          ) => (
             <li className="todo" key={idx}>
               <p>
                 {format(new Date(item.createdAt), "dd/MM/yyyy kk:mm:ss")} -{" "}
