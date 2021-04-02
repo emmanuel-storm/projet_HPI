@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import format from "date-fns/format";
 import { Button } from "react-bootstrap";
+import { bool } from "prop-types";
 //pour la date
 // import moment from "moment";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,14 +10,16 @@ const fetchURL = "https://6053736845e4b30017291b83.mockapi.io/tasks";
 const getItems = () => fetch(fetchURL).then(res => res.json());
 
 function create(e) {
-  // entité d'ajout - POST   ===>   e.preventDefault() a été mis dans le onChange de input
+  // entité d'ajout - POST   ===>   e.preventDefault() a été mis dans le onChange de input car sinon
+  //erreur : e.preventDefault() is not a function
 
   //creer l'entité
   fetch(fetchURL, {
     method: "POST",
     body: JSON.stringify({
       tache: null,
-      date: null
+      date: null, // sera rajoutée d'elle seule sans que l'utilisateur la rentre, la date et l'heure comme sur createdAt de l'api
+      isComplete: bool
     })
   })
     .then(res => res.json())
@@ -38,8 +41,9 @@ function update(e) {
   fetch(fetchURL, {
     method: "PUT",
     body: JSON.stringify({
-      tache: useState.tache,
-      date: useState.date
+      tache: null,
+      date: null,
+      isComplete: bool
     })
   })
     .then(res => res.json())
@@ -58,6 +62,7 @@ function supp(e) {
   // supprime les entités
 
   fetch(`${fetchURL}/${e.id}`, {
+    // {task.id}
     method: "DELETE"
   })
     .then(res => res.json())
@@ -70,14 +75,10 @@ function supp(e) {
 }
 
 function CurrentTasks() {
-  // ajouter une tache
-
-  // marquer une tache comme complete ou !
-
-  // supprimer une tache
-
   const [items, setItems] = useState([]);
   const [task, setTask] = useState("");
+
+  // afficher la date dans un format plus lisible
 
   useEffect(() => {
     getItems().then(data =>
@@ -94,7 +95,6 @@ function CurrentTasks() {
     <div className="app">
       <h1>CURRENT TASKS</h1>
       <form>
-        <legend className="text-center">Gestionnaire De Tâches</legend>
         <label htmlFor="tache">
           Add a Tache:
           <input
@@ -120,9 +120,11 @@ function CurrentTasks() {
         </button>
       </form>
       {/* <TaskForm data={data} /> */}
+
+      {/* l'affichage des taches de l'api dans des listes  */}
       <ul className="todo-list">
         {items
-          .filter(item => item.isComplete === false)
+          .filter(item => item.isComplete === false) // pour mettre que les taches en cours (isComplete: false) dans la liste Current tasks
           .map((
             item,
             idx //// j'ai rajouté idx car quand j'appellais key={item.id} il y"avait des erreurs d'elements avec la meme clé
@@ -139,7 +141,7 @@ function CurrentTasks() {
       <h1>COMPLETED TASKS</h1>
       <ul className="todo-list">
         {items
-          .filter(item => item.isComplete === true)
+          .filter(item => item.isComplete === true) // pour mettre que les taches trerminées (isComplete: true) dans la liste Completed tasks
           .map((item, idx) => (
             <li className="todo" key={idx}>
               <p>
