@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import format from "date-fns/format";
-import { Button, Card, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 //pour la date
 import moment from "moment";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,96 +8,74 @@ import moment from "moment";
 const fetchURL = "https://6053736845e4b30017291b83.mockapi.io/tasks";
 const getItems = () => fetch(fetchURL).then(res => res.json());
 
-function Todo({ item, index, markTask, removeTask }) {
-  return (
-    <div className="todo">
-      <span style={{ textDecoration: item.isComplete ? "line-through" : "" }}>
-        {" "}
-      </span>
-      <div>
-        <Button variant="outline-success" onClick={() => markTask(index)}>
-          {" "}
-          ✓{" "}
-        </Button>{" "}
-        {""}
-        <Button variant="outline-danger" onClick={() => removeTask(index)}>
-          {" "}
-          ✕{" "}
-        </Button>
-      </div>
-    </div>
-  );
+function create(e) {
+  // entité d'ajout - POST
+
+  //creer l'entité
+  fetch(fetchURL, {
+    method: "POST",
+    body: JSON.stringify({
+      tache: useState.tache,
+      date: useState.date
+    })
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
-function TaskForm({ data }) {
-  const [value, setValue] = React.useState("");
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!value) return;
-    data(value);
-    setValue("");
-  };
+function update(e) {
+  // entité de mise à jour - PUT
+  e.preventDefault();
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>
-          {" "}
-          <b>Add task</b>{" "}
-        </Form.Label>
-        <Form.Control
-          type="text"
-          className="input"
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          placeholder="add new task"
-        />
-      </Form.Group>
-      <Button variant="primary mb-3" type="submit">
-        Submit
-      </Button>
-    </Form>
-  );
+  //ça mettra à jour les entrées avec PUT
+  fetch(fetchURL, {
+    method: "PUT",
+    body: JSON.stringify({
+      tache: useState.tache,
+      date: useState.date
+    })
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+function supp(e) {
+  //entité pour supprimer - DELETE
+  e.preventDefault();
+
+  // supprime les entités
+
+  fetch(fetchURL, {
+    method: "DELETE"
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 function CurrentTasks() {
   // ajouter une tache
 
-  // const addTask = (description, createdAt) => {
-  //   const newItems = [{ description, createdAt }, ...items];
-  //   setItems(newItems);
-  // };
-
-  const data = { task: "example", date: "dd/MM/yyyy kk:mm:ss" };
-  fetch(fetchURL, {
-    method: "POST",
-    body: JSON.stringify(data)
-  })
-    .then(res => res.json())
-    .then(data => {
-      console.log("success:", data);
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
-
   // marquer une tache comme complete ou !
-
-  const markTask = index => {
-    const newItems = [...items];
-    newItems[index].isComplete = true;
-    setItems(newItems);
-  };
 
   // supprimer une tache
 
-  const removeTask = index => {
-    const newItems = [...items];
-    newItems.splice(index, 1);
-    setItems(newItems);
-  };
-
   const [items, setItems] = useState([]);
+  const [task, setTask] = useState("");
 
   useEffect(() => {
     getItems().then(data =>
@@ -113,24 +91,33 @@ function CurrentTasks() {
   return (
     <div className="app">
       <h1>CURRENT TASKS</h1>
-      <TaskForm data={data} />
+      <form>
+        <legend className="text-center">Gestionnaire De Tâches</legend>
+        <label htmlFor="tache">
+          Add a Tache:
+          <input
+            name="add-task"
+            type="text"
+            className="add-task"
+            value={task}
+            onChange={e =>
+              setTask(e.preventDefault(), { tache: e.target.value })
+            }
+            required
+          />
+        </label>
+      </form>
+      {/* <TaskForm data={data} /> */}
       <ul className="todo-list">
-        {/* <TaskForm addTask={addTask} /> */}
         {items
           .filter(item => item.isComplete === false)
-          .map(item => (
-            <li className="todo" key={item.id}>
+          .map((item, idx) => (
+            <li className="todo" key={idx}>
               <p>
                 {format(new Date(item.createdAt), "dd/MM/yyyy kk:mm:ss")} -{" "}
                 {item.description}
               </p>
-              <Todo
-                key={item}
-                item={item}
-                // todo={todo}
-                markTask={markTask}
-                removeTask={removeTask}
-              />
+              {/* enlevé la balise Todo */}
             </li>
           ))}
       </ul>
@@ -138,8 +125,8 @@ function CurrentTasks() {
       <ul className="todo-list">
         {items
           .filter(item => item.isComplete === true)
-          .map(item => (
-            <li className="todo" key={item.id}>
+          .map((item, idx) => (
+            <li className="todo" key={idx}>
               <p>
                 {format(new Date(item.createdAt), "dd/MM/yyyy kk:mm")} -{" "}
                 {item.description}
