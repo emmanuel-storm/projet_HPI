@@ -1,7 +1,5 @@
                                             #PROJET HPI#
 
-
-
 ###### Etat actuel du code
 
 Sur les 7 taches, il y'a 3 qui ont été faites totalement à savoir :
@@ -29,6 +27,8 @@ J'ai aussi utilisé une bibliothèque de date qui est "moment" : https://momentj
 
 J'ai rassemblé toutes les taches à faire ainsi que mon avancement dans le code à chaque grande étape au cas où je perdrais par quelconque manipulation l'intégralité de mon avancement.
 Vous y trouverez également les différentes pistes utilisées à certains moments : https://www.notion.so/Projet-React-HPI-655e1b806a5148159743f8b73b603a68
+
+Dans les commit vous allez surement trouver un dans le lequel je parlais de refactoring car j'avais réorganisé mon code pour faire par exemple un fichier AddTask.js pour les taches et RemoveTask.js pour la suppression des taches par exemple, et j'ai fini par refaire dans tout un fichier sous les conseils de mon prof qui me disait que j'allais pouvoir faire cela une fois le projet presque entierement terminé et qu'il fallait mieux aller pas à pas pour ne pas perdre le fil dans le code
 
 # Démarrage avec Create React App
 
