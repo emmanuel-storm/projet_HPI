@@ -1,3 +1,31 @@
+                                                #Projet React js semestre 2#
+
+## explication
+
+le projet réalisé est un gestionnaire de tache qui, comme son nom l'indique, permet de creer et classer les taches en fonction de se qui est terminé ou pas
+
+les fonctionnalités presentes et terminées sont :
+=> pouvoir voir les taches en cours dans un tableau et les taches terminées dans un autre
+=> Pouvoir rajouter une tache en indiquant le label ainsi que la date et l'heure à laquelle on la crée
+=> Pouvoir supprimer une tache terminée ou en cours
+
+les fonctionalités en cours de developpement :
+=> pouvoir mettre une tache en cours comme terminée et la placer dans le tableau des taches terminées
+=> pouvoir remettre une tache terminée dans le tableau "en cours" au cas où l'on s'est trompé de touche
+
+## recuperation du code
+
+Vous Pouvez cloner le projet en utilisant le lien du repository, à savoir : https://github.com/emmanuel-storm/projet_HPI.git
+
+aller dans une invite de commande, de preference git bash ou directement dans l'éditeur de code comme visual studio code et suivre ces étapes:
+
+- aller dans un dossier ou vous vouler cloner le projet donc : cd le_chemin_du_dossier
+- git clone https://github.com/emmanuel-storm/projet_HPI.git
+- aller dans l'éditeur (visual studio code) et ouvrir le dossier
+- npm start (pour lancer le programme)
+
+INCROYABLE ! vous avez affichez à l'ecran mon gestionnaire de tache
+
                                             #PROJET HPI#
 
 ###### Etat actuel du code
