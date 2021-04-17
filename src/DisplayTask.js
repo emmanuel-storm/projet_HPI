@@ -1,6 +1,6 @@
 import format from "date-fns/format";
 import React from "react";
-import { fetchURL } from "./constant";
+import { fetchURL, getItems } from "./constant";
 import { data } from "browserslist";
 
 function DisplayTask({ items, refresh }) {
@@ -13,12 +13,12 @@ function DisplayTask({ items, refresh }) {
   const completeAction = item => {
     fetch(fetchURL + "/" + item.id, {
       method: "PUT",
-      body: JSON.stringify(item, (item.isComplete = true))
-    }).then(res => refresh);
+      body: JSON.stringify({ isComplete: Boolean(true) })
+    }).then(res => refresh());
   };
 
   const uncompleteAction = () => {
-    // todo
+    // todo uncomplete
     refresh();
   };
 
@@ -39,7 +39,7 @@ function DisplayTask({ items, refresh }) {
               <p>
                 {format(new Date(item.createdAt), "dd/MM/yyyy kk:mm:ss")} -{" "}
                 {item.description}{" "}
-                <button onClick={() => completeAction(data)}>✓</button>{" "}
+                <button onClick={() => completeAction(item)}>✓</button>{" "}
                 <button onClick={() => deleteAction(item)}>X</button>
               </p>
               {/* enlevé la balise Todo */}
